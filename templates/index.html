@@ -1,0 +1,2801 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>திருக்குறள் | Daily Wisdom</title>
+
+
+    <style>
+
+        /* =================================
+           RESET
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =================================
+           BODY
+        ================================= */
+
+        body {
+
+            font-family:
+                Arial,
+                "Noto Sans Tamil",
+                sans-serif;
+
+            background: #f6f1e8;
+
+            color: #30251c;
+
+            min-height: 100vh;
+
+            transition: 0.3s ease;
+
+        }
+
+
+        /* =================================
+           APP CONTAINER
+        ================================= */
+
+        .app {
+
+            width: 100%;
+
+            max-width: 480px;
+
+            margin: auto;
+
+            min-height: 100vh;
+
+            padding: 18px;
+
+            padding-bottom: 100px;
+
+        }
+
+
+        /* =================================
+           HEADER
+        ================================= */
+
+        header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .logo h1 {
+
+            font-size: 26px;
+
+            color: #70451f;
+
+        }
+
+
+        .logo p {
+
+            font-size: 12px;
+
+            color: #8b7d70;
+
+            margin-top: 3px;
+
+        }
+
+
+        #themeButton {
+
+            width: 42px;
+
+            height: 42px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #eadfce;
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =================================
+           HERO
+        ================================= */
+
+        .hero {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #70451f,
+                    #a66c38
+                );
+
+            color: white;
+
+            border-radius: 26px;
+
+            padding: 27px 22px;
+
+            margin-bottom: 18px;
+
+            box-shadow:
+                0 12px 30px
+                rgba(70, 42, 20, 0.18);
+
+        }
+
+
+        .hero-label {
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            opacity: 0.75;
+
+        }
+
+
+        .hero h2 {
+
+            font-size: 28px;
+
+            line-height: 1.4;
+
+            margin-top: 10px;
+
+        }
+
+
+        .hero p {
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin-top: 10px;
+
+            opacity: 0.88;
+
+        }
+
+
+        /* =================================
+           SEARCH CARD
+        ================================= */
+
+        .search-card {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 16px;
+
+            margin-bottom: 18px;
+
+            box-shadow:
+                0 7px 22px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        .search-title {
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .search-row {
+
+            display: flex;
+
+            gap: 7px;
+
+        }
+
+
+        #kuralNumber {
+
+            flex: 1;
+
+            min-width: 0;
+
+            padding: 13px;
+
+            border: 1px solid #ded6cc;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+
+            outline: none;
+
+        }
+
+
+        #kuralNumber:focus {
+
+            border-color: #8c592c;
+
+        }
+
+
+        #searchButton {
+
+            border: none;
+
+            padding: 0 17px;
+
+            border-radius: 12px;
+
+            background: #754821;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        #voiceSearchButton {
+
+            width: 48px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: #eee4d5;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+        }
+
+
+        #voiceSearchButton.listening {
+
+            background: #c9574b;
+
+            color: white;
+
+        }
+
+
+        #randomButton {
+
+            width: 100%;
+
+            border: none;
+
+            padding: 12px;
+
+            margin-top: 9px;
+
+            border-radius: 12px;
+
+            background: #eee4d5;
+
+            color: #6d431f;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        #randomButton:active,
+        #searchButton:active,
+        #voiceSearchButton:active {
+
+            transform: scale(0.98);
+
+        }
+
+
+        /* =================================
+           ERROR
+        ================================= */
+
+        #errorMessage {
+
+            background: #f7dddd;
+
+            color: #8b3029;
+
+            padding: 12px;
+
+            border-radius: 12px;
+
+            margin-bottom: 15px;
+
+            font-size: 13px;
+
+        }
+
+
+        .hidden {
+
+            display: none !important;
+
+        }
+
+
+        /* =================================
+           LOADING
+        ================================= */
+
+        #loading {
+
+            text-align: center;
+
+            color: #8a7d70;
+
+            padding: 25px;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =================================
+           KURAL CARD
+        ================================= */
+
+        .kural-card {
+
+            background: white;
+
+            border-radius: 26px;
+
+            padding: 21px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 10px 28px
+                rgba(0, 0, 0, 0.08);
+
+        }
+
+
+        /* =================================
+           KURAL TOP
+        ================================= */
+
+        .kural-top {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        #kuralNumberDisplay {
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            color: #8b5729;
+
+        }
+
+
+        #saveButton {
+
+            width: 40px;
+
+            height: 40px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #f0e5d6;
+
+            font-size: 21px;
+
+            cursor: pointer;
+
+        }
+
+
+        /* =================================
+           TAMIL KURAL
+        ================================= */
+
+        .tamil-kural {
+
+            margin-top: 24px;
+
+            padding: 18px;
+
+            background: #faf6ef;
+
+            border-left: 4px solid #9a6230;
+
+            border-radius: 14px;
+
+        }
+
+
+        .tamil-kural p {
+
+            font-size: 20px;
+
+            line-height: 1.9;
+
+            font-weight: bold;
+
+            color: #33271d;
+
+        }
+
+
+        /* =================================
+           META
+        ================================= */
+
+        .meta {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-top: 16px;
+
+        }
+
+
+        .meta span {
+
+            background: #eee4d5;
+
+            color: #70451f;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+        }
+
+
+        /* =================================
+           SECTION
+        ================================= */
+
+        .section {
+
+            border-top:
+                1px solid #eee7df;
+
+            margin-top: 18px;
+
+            padding-top: 17px;
+
+        }
+
+
+        .section-title {
+
+            font-size: 14px;
+
+            color: #71451f;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .translation {
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            color: #675c52;
+
+        }
+
+
+        #explanationAuthor {
+
+            font-size: 14px;
+
+            color: #71451f;
+
+            margin-bottom: 8px;
+
+            font-weight: bold;
+
+        }
+
+
+        #explanation {
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            color: #675c52;
+
+        }
+
+
+        /* =================================
+           ACTION BUTTONS
+        ================================= */
+
+        .actions {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 10px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .action-button {
+
+            border:
+                1px solid #e1d8ce;
+
+            background: white;
+
+            padding: 12px;
+
+            border-radius: 13px;
+
+            font-weight: bold;
+
+            color: #503a27;
+
+            cursor: pointer;
+
+        }
+
+
+        .action-button:active {
+
+            transform: scale(0.97);
+
+        }
+
+
+        /* =================================
+           SAVED VIEW
+        ================================= */
+
+        #savedView {
+
+            margin-top: 10px;
+
+        }
+
+
+        .saved-title {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+
+            color: #71451f;
+
+        }
+
+
+        .saved-card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 15px;
+
+            margin-bottom: 10px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            box-shadow:
+                0 5px 15px
+                rgba(0, 0, 0, 0.06);
+
+        }
+
+
+        .saved-card-left {
+
+            flex: 1;
+
+            cursor: pointer;
+
+        }
+
+
+        .saved-number {
+
+            font-size: 12px;
+
+            color: #8b5729;
+
+            font-weight: bold;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .saved-text {
+
+            font-size: 15px;
+
+            line-height: 1.5;
+
+            font-weight: bold;
+
+        }
+
+
+        .delete-button {
+
+            border: none;
+
+            background: #f4dfdc;
+
+            color: #a13c32;
+
+            width: 36px;
+
+            height: 36px;
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+        }
+
+
+        .empty-saved {
+
+            text-align: center;
+
+            padding: 40px 15px;
+
+            color: #887b6d;
+
+        }
+
+
+        /* =================================
+           BOTTOM NAV
+        ================================= */
+
+        .bottom-nav {
+
+            position: fixed;
+
+            bottom: 0;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            width: 100%;
+
+            max-width: 480px;
+
+            background:
+                rgba(255, 255, 255, 0.97);
+
+            border-top:
+                1px solid #e6ddd3;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr 1fr;
+
+            padding: 10px 10px 12px;
+
+            z-index: 100;
+
+        }
+
+
+        .nav-button {
+
+            border: none;
+
+            background: transparent;
+
+            color: #887b6d;
+
+            font-size: 11px;
+
+            cursor: pointer;
+
+            padding: 4px;
+
+        }
+
+
+        .nav-button span {
+
+            display: block;
+
+            font-size: 20px;
+
+            margin-bottom: 2px;
+
+        }
+
+
+        .nav-button.active {
+
+            color: #754821;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =================================
+           DARK MODE
+        ================================= */
+
+        body.dark {
+
+            background: #171412;
+
+            color: #f4eee8;
+
+        }
+
+
+        body.dark .search-card,
+        body.dark .kural-card,
+        body.dark .saved-card {
+
+            background: #24201d;
+
+        }
+
+
+        body.dark #kuralNumber {
+
+            background: #302a26;
+
+            color: white;
+
+            border-color: #4b4037;
+
+        }
+
+
+        body.dark .tamil-kural {
+
+            background: #302923;
+
+        }
+
+
+        body.dark .tamil-kural p {
+
+            color: #f4eee8;
+
+        }
+
+
+        body.dark .translation,
+        body.dark #explanation {
+
+            color: #c8bdb2;
+
+        }
+
+
+        body.dark .action-button {
+
+            background: #302a26;
+
+            color: white;
+
+            border-color: #4b4037;
+
+        }
+
+
+        body.dark .bottom-nav {
+
+            background: #24201d;
+
+            border-color: #40362f;
+
+        }
+
+
+        body.dark #themeButton {
+
+            background: #302a26;
+
+            color: white;
+
+        }
+
+
+        body.dark #voiceSearchButton {
+
+            background: #40372f;
+
+            color: white;
+
+        }
+
+
+        body.dark #randomButton {
+
+            background: #40372f;
+
+            color: white;
+
+        }
+
+
+        /* =================================
+           SMALL MOBILE
+        ================================= */
+
+        @media (max-width: 360px) {
+
+            .app {
+
+                padding: 14px;
+
+            }
+
+
+            .hero h2 {
+
+                font-size: 25px;
+
+            }
+
+
+            .tamil-kural p {
+
+                font-size: 18px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <!-- =================================
+         HEADER
+    ================================= -->
+
+    <header>
+
+        <div class="logo">
+
+            <h1>திருக்குறள்</h1>
+
+            <p>Wisdom for everyday life</p>
+
+        </div>
+
+
+        <button
+            id="themeButton"
+            title="Toggle dark mode">
+
+            🌙
+
+        </button>
+
+    </header>
+
+
+
+    <!-- =================================
+         HOME VIEW
+    ================================= -->
+
+    <div id="homeView">
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-label">
+
+                TODAY'S WISDOM
+
+            </div>
+
+
+            <h2>
+
+                ஒரு குறள்<br>
+
+                ஒரு சிந்தனை
+
+            </h2>
+
+
+            <p>
+
+                Read and explore the timeless
+                wisdom of Thirukkural.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- SEARCH -->
+
+        <section class="search-card">
+
+            <div class="search-title">
+
+                Find a Kural
+
+            </div>
+
+
+            <div class="search-row">
+
+
+                <input
+                    id="kuralNumber"
+                    type="number"
+                    min="1"
+                    max="1330"
+                    placeholder="1 - 1330"
+                >
+
+
+                <button
+                    id="voiceSearchButton"
+                    title="Search by voice">
+
+                    🎤
+
+                </button>
+
+
+                <button
+                    id="searchButton">
+
+                    Find
+
+                </button>
+
+
+            </div>
+
+
+            <button
+                id="randomButton">
+
+                🎲 Give me a Random Kural
+
+            </button>
+
+        </section>
+
+
+
+        <!-- ERROR -->
+
+        <div
+            id="errorMessage"
+            class="hidden">
+        </div>
+
+
+
+        <!-- LOADING -->
+
+        <div id="loading">
+
+            Loading Kural...
+
+        </div>
+
+
+
+        <!-- =================================
+             KURAL CARD
+        ================================= -->
+
+        <section
+            id="kuralCard"
+            class="kural-card hidden">
+
+
+            <!-- TOP -->
+
+            <div class="kural-top">
+
+                <span
+                    id="kuralNumberDisplay">
+
+                    Kural #1
+
+                </span>
+
+
+                <button
+                    id="saveButton"
+                    title="Save Kural">
+
+                    ♡
+
+                </button>
+
+            </div>
+
+
+
+            <!-- TAMIL KURAL -->
+
+            <div class="tamil-kural">
+
+                <p id="line1"></p>
+
+                <p id="line2"></p>
+
+            </div>
+
+
+
+            <!-- META -->
+
+            <div class="meta">
+
+                <span id="paal"></span>
+
+                <span id="iyal"></span>
+
+                <span id="athigaram"></span>
+
+            </div>
+
+
+
+            <!-- ENGLISH MEANING -->
+
+            <div class="section">
+
+                <div class="section-title">
+
+                    English Meaning
+
+                </div>
+
+
+                <p
+                    id="translation"
+                    class="translation">
+                </p>
+
+            </div>
+
+
+
+            <!-- EXPLANATION -->
+
+            <div class="section">
+
+                <div id="explanationAuthor">
+
+                    Explanation
+
+                </div>
+
+
+                <p id="explanation"></p>
+
+            </div>
+
+
+
+            <!-- ACTIONS -->
+
+            <div class="actions">
+
+
+                <button
+                    class="action-button"
+                    id="listenButton">
+
+                    🔊 Listen
+
+                </button>
+
+
+                <button
+                    class="action-button"
+                    id="shareButton">
+
+                    ↗ Share
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- =================================
+         SAVED VIEW
+    ================================= -->
+
+    <div
+        id="savedView"
+        class="hidden">
+
+
+        <div class="saved-title">
+
+            ❤️ Saved Kurals
+
+        </div>
+
+
+        <div id="savedList"></div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =================================
+     BOTTOM NAVIGATION
+================================= -->
+
+<nav class="bottom-nav">
+
+
+    <button
+        class="nav-button active"
+        id="homeNav">
+
+        <span>⌂</span>
+
+        Home
+
+    </button>
+
+
+    <button
+        class="nav-button"
+        id="savedNav">
+
+        <span>♡</span>
+
+        Saved
+
+    </button>
+
+
+    <button
+        class="nav-button"
+        id="randomNav">
+
+        <span>🎲</span>
+
+        Random
+
+    </button>
+
+
+</nav>
+
+
+
+<script>
+
+
+/* ==========================================
+   GET HTML ELEMENTS
+========================================== */
+
+const input =
+    document.getElementById(
+        "kuralNumber"
+    );
+
+
+const searchButton =
+    document.getElementById(
+        "searchButton"
+    );
+
+
+const voiceSearchButton =
+    document.getElementById(
+        "voiceSearchButton"
+    );
+
+
+const randomButton =
+    document.getElementById(
+        "randomButton"
+    );
+
+
+const randomNav =
+    document.getElementById(
+        "randomNav"
+    );
+
+
+const homeNav =
+    document.getElementById(
+        "homeNav"
+    );
+
+
+const savedNav =
+    document.getElementById(
+        "savedNav"
+    );
+
+
+const loading =
+    document.getElementById(
+        "loading"
+    );
+
+
+const card =
+    document.getElementById(
+        "kuralCard"
+    );
+
+
+const errorBox =
+    document.getElementById(
+        "errorMessage"
+    );
+
+
+const themeButton =
+    document.getElementById(
+        "themeButton"
+    );
+
+
+const saveButton =
+    document.getElementById(
+        "saveButton"
+    );
+
+
+const listenButton =
+    document.getElementById(
+        "listenButton"
+    );
+
+
+const shareButton =
+    document.getElementById(
+        "shareButton"
+    );
+
+
+const homeView =
+    document.getElementById(
+        "homeView"
+    );
+
+
+const savedView =
+    document.getElementById(
+        "savedView"
+    );
+
+
+const savedList =
+    document.getElementById(
+        "savedList"
+    );
+
+
+/* ==========================================
+   ERROR
+========================================== */
+
+function showError(message) {
+
+    errorBox.textContent =
+        message;
+
+    errorBox.classList.remove(
+        "hidden"
+    );
+
+}
+
+
+function hideError() {
+
+    errorBox.classList.add(
+        "hidden"
+    );
+
+}
+
+
+/* ==========================================
+   LOCAL STORAGE - SAVED KURALS
+========================================== */
+
+function getSavedKurals() {
+
+    const saved =
+        localStorage.getItem(
+            "savedKurals"
+        );
+
+
+    if (!saved) {
+
+        return [];
+
+    }
+
+
+    try {
+
+        return JSON.parse(saved);
+
+    }
+
+    catch {
+
+        return [];
+
+    }
+
+}
+
+
+function saveKurals(list) {
+
+    localStorage.setItem(
+        "savedKurals",
+        JSON.stringify(list)
+    );
+
+}
+
+
+/* ==========================================
+   DISPLAY KURAL
+========================================== */
+
+function displayKural(data) {
+
+    document.getElementById(
+        "kuralNumberDisplay"
+    ).textContent =
+        `Kural #${data.number}`;
+
+
+    document.getElementById(
+        "line1"
+    ).textContent =
+        data.line1 || "";
+
+
+    document.getElementById(
+        "line2"
+    ).textContent =
+        data.line2 || "";
+
+
+    document.getElementById(
+        "translation"
+    ).textContent =
+        data.translation ||
+        "Translation not available.";
+
+
+    document.getElementById(
+        "paal"
+    ).textContent =
+        data.paal || "";
+
+
+    document.getElementById(
+        "iyal"
+    ).textContent =
+        data.iyal || "";
+
+
+    document.getElementById(
+        "athigaram"
+    ).textContent =
+        data.athigaram || "";
+
+
+    document.getElementById(
+        "explanationAuthor"
+    ).textContent =
+        data.urai1Author ||
+        "Explanation";
+
+
+    document.getElementById(
+        "explanation"
+    ).textContent =
+        data.urai1 ||
+        "Explanation not available.";
+
+
+    updateSaveButton(
+        data.number
+    );
+
+}
+
+
+/* ==========================================
+   LOAD KURAL
+========================================== */
+
+async function loadKural(number) {
+
+    loading.classList.remove(
+        "hidden"
+    );
+
+
+    card.classList.add(
+        "hidden"
+    );
+
+
+    hideError();
+
+
+    try {
+
+        const response =
+            await fetch(
+                `/api/kural/${number}`
+            );
+
+
+        const result =
+            await response.json();
+
+
+        console.log(
+            "Kural API:",
+            result
+        );
+
+
+        if (
+            !response.ok ||
+            !result.success
+        ) {
+
+            throw new Error(
+                result.message ||
+                "Unable to load Kural."
+            );
+
+        }
+
+
+        displayKural(
+            result.data
+        );
+
+
+        loading.classList.add(
+            "hidden"
+        );
+
+
+        card.classList.remove(
+            "hidden"
+        );
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+
+    catch (error) {
+
+        console.error(error);
+
+
+        loading.classList.add(
+            "hidden"
+        );
+
+
+        showError(
+            error.message
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   FIND BUTTON
+========================================== */
+
+searchButton.addEventListener(
+    "click",
+    function () {
+
+        const number =
+            Number(input.value);
+
+
+        if (
+            !Number.isInteger(number) ||
+            number < 1 ||
+            number > 1330
+        ) {
+
+            showError(
+                "Please enter a Kural number between 1 and 1330."
+            );
+
+            return;
+
+        }
+
+
+        loadKural(number);
+
+    }
+);
+
+
+/* ==========================================
+   ENTER KEY
+========================================== */
+
+input.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            searchButton.click();
+
+        }
+
+    }
+);
+
+
+/* ==========================================
+   RANDOM KURAL
+========================================== */
+
+async function loadRandomKural() {
+
+    loading.classList.remove(
+        "hidden"
+    );
+
+
+    card.classList.add(
+        "hidden"
+    );
+
+
+    hideError();
+
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/kural/random"
+            );
+
+
+        const result =
+            await response.json();
+
+
+        console.log(
+            "Random API:",
+            result
+        );
+
+
+        if (
+            !response.ok ||
+            !result.success
+        ) {
+
+            throw new Error(
+                result.message ||
+                "Unable to load random Kural."
+            );
+
+        }
+
+
+        displayKural(
+            result.data
+        );
+
+
+        loading.classList.add(
+            "hidden"
+        );
+
+
+        card.classList.remove(
+            "hidden"
+        );
+
+
+        showHome();
+
+    }
+
+
+    catch (error) {
+
+        console.error(error);
+
+
+        loading.classList.add(
+            "hidden"
+        );
+
+
+        showError(
+            error.message
+        );
+
+    }
+
+}
+
+
+randomButton.addEventListener(
+    "click",
+    loadRandomKural
+);
+
+
+randomNav.addEventListener(
+    "click",
+    loadRandomKural
+);
+
+
+/* ==========================================
+   SAVE BUTTON
+========================================== */
+
+function updateSaveButton(number) {
+
+    const saved =
+        getSavedKurals();
+
+
+    if (
+        saved.includes(
+            String(number)
+        )
+    ) {
+
+        saveButton.textContent =
+            "♥";
+
+    }
+
+    else {
+
+        saveButton.textContent =
+            "♡";
+
+    }
+
+}
+
+
+saveButton.addEventListener(
+    "click",
+    function() {
+
+        const numberText =
+            document
+                .getElementById(
+                    "kuralNumberDisplay"
+                )
+                .textContent;
+
+
+        const number =
+            numberText.replace(
+                "Kural #",
+                ""
+            );
+
+
+        let saved =
+            getSavedKurals();
+
+
+        if (
+            saved.includes(
+                String(number)
+            )
+        ) {
+
+            saved =
+                saved.filter(
+                    item =>
+                        item !==
+                        String(number)
+                );
+
+
+            saveButton.textContent =
+                "♡";
+
+        }
+
+        else {
+
+            saved.push(
+                String(number)
+            );
+
+
+            saveButton.textContent =
+                "♥";
+
+        }
+
+
+        saveKurals(saved);
+
+    }
+);
+
+
+/* ==========================================
+   SAVED KURALS
+========================================== */
+
+async function loadSavedKurals() {
+
+    const saved =
+        getSavedKurals();
+
+
+    savedList.innerHTML = "";
+
+
+    if (saved.length === 0) {
+
+        savedList.innerHTML = `
+
+            <div class="empty-saved">
+
+                <div style="font-size:42px;">
+                    ♡
+                </div>
+
+                <br>
+
+                No saved Kurals yet.
+
+                <br><br>
+
+                Open a Kural and tap ♡
+                to save it.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const reversed =
+        [...saved].reverse();
+
+
+    for (
+        const number of reversed
+    ) {
+
+        try {
+
+            const response =
+                await fetch(
+                    `/api/kural/${number}`
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if (
+                !response.ok ||
+                !result.success
+            ) {
+
+                continue;
+
+            }
+
+
+            const data =
+                result.data;
+
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "saved-card";
+
+
+            item.innerHTML = `
+
+                <div
+                    class="saved-card-left"
+                    data-number="${data.number}"
+                >
+
+                    <div class="saved-number">
+
+                        Kural #${data.number}
+
+                    </div>
+
+                    <div class="saved-text">
+
+                        ${data.line1 || ""}
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="delete-button"
+                    data-number="${data.number}">
+
+                    🗑
+
+                </button>
+
+            `;
+
+
+            item
+                .querySelector(
+                    ".saved-card-left"
+                )
+                .addEventListener(
+                    "click",
+                    function() {
+
+                        const n =
+                            Number(
+                                this.dataset.number
+                            );
+
+
+                        input.value = n;
+
+
+                        showHome();
+
+
+                        loadKural(n);
+
+                    }
+                );
+
+
+            item
+                .querySelector(
+                    ".delete-button"
+                )
+                .addEventListener(
+                    "click",
+                    function() {
+
+                        const n =
+                            this.dataset.number;
+
+
+                        let current =
+                            getSavedKurals();
+
+
+                        current =
+                            current.filter(
+                                x =>
+                                    x !==
+                                    String(n)
+                            );
+
+
+                        saveKurals(
+                            current
+                        );
+
+
+                        loadSavedKurals();
+
+                    }
+                );
+
+
+            savedList.appendChild(
+                item
+            );
+
+        }
+
+
+        catch (error) {
+
+            console.log(error);
+
+        }
+
+    }
+
+}
+
+
+/* ==========================================
+   HOME VIEW
+========================================== */
+
+function showHome() {
+
+    homeView.classList.remove(
+        "hidden"
+    );
+
+
+    savedView.classList.add(
+        "hidden"
+    );
+
+
+    homeNav.classList.add(
+        "active"
+    );
+
+
+    savedNav.classList.remove(
+        "active"
+    );
+
+
+    randomNav.classList.remove(
+        "active"
+    );
+
+}
+
+
+/* ==========================================
+   SAVED VIEW
+========================================== */
+
+function showSaved() {
+
+    homeView.classList.add(
+        "hidden"
+    );
+
+
+    savedView.classList.remove(
+        "hidden"
+    );
+
+
+    homeNav.classList.remove(
+        "active"
+    );
+
+
+    savedNav.classList.add(
+        "active"
+    );
+
+
+    randomNav.classList.remove(
+        "active"
+    );
+
+
+    loadSavedKurals();
+
+}
+
+
+homeNav.addEventListener(
+    "click",
+    showHome
+);
+
+
+savedNav.addEventListener(
+    "click",
+    showSaved
+);
+
+
+/* ==========================================
+   🔊 LISTEN - ENGLISH VOICE
+========================================== */
+
+let voices = [];
+
+
+function loadVoices() {
+
+    voices =
+        window.speechSynthesis
+            .getVoices();
+
+}
+
+
+loadVoices();
+
+
+if (
+    "speechSynthesis" in window
+) {
+
+    window.speechSynthesis
+        .onvoiceschanged =
+        loadVoices;
+
+}
+
+
+listenButton.addEventListener(
+    "click",
+    function() {
+
+
+        /* ==============================
+           STOP CURRENT SPEECH
+        ============================== */
+
+        if (
+            window.speechSynthesis
+                .speaking
+        ) {
+
+            window.speechSynthesis
+                .cancel();
+
+
+            listenButton.textContent =
+                "🔊 Listen";
+
+
+            return;
+
+        }
+
+
+        /* ==============================
+           GET ENGLISH MEANING
+        ============================== */
+
+        const translation =
+            document.getElementById(
+                "translation"
+            ).textContent.trim();
+
+
+        const explanation =
+            document.getElementById(
+                "explanation"
+            ).textContent.trim();
+
+
+        /*
+            English meaning + explanation
+        */
+
+        let text = "";
+
+
+        if (
+            translation &&
+            translation !==
+            "Translation not available."
+        ) {
+
+            text +=
+                "English meaning. " +
+                translation;
+
+        }
+
+
+        if (
+            explanation &&
+            explanation !==
+            "Explanation not available."
+        ) {
+
+            text +=
+                ". Explanation. " +
+                explanation;
+
+        }
+
+
+        if (!text.trim()) {
+
+            alert(
+                "English meaning is not available."
+            );
+
+            return;
+
+        }
+
+
+        /* ==============================
+           CREATE SPEECH
+        ============================== */
+
+        const speech =
+            new SpeechSynthesisUtterance(
+                text
+            );
+
+
+        /*
+            IMPORTANT:
+            English voice
+        */
+
+        speech.lang =
+            "en-US";
+
+
+        /*
+            Speaking speed
+        */
+
+        speech.rate =
+            0.85;
+
+
+        speech.pitch =
+            1;
+
+
+        speech.volume =
+            1;
+
+
+        /* ==============================
+           FIND ENGLISH VOICE
+        ============================== */
+
+        const englishVoice =
+            voices.find(
+                voice =>
+                    voice.lang
+                        .toLowerCase()
+                        .startsWith("en")
+            );
+
+
+        if (englishVoice) {
+
+            speech.voice =
+                englishVoice;
+
+        }
+
+
+        /* ==============================
+           SPEECH START
+        ============================== */
+
+        speech.onstart =
+            function() {
+
+                listenButton.textContent =
+                    "⏹ Stop";
+
+            };
+
+
+        /* ==============================
+           SPEECH FINISHED
+        ============================== */
+
+        speech.onend =
+            function() {
+
+                listenButton.textContent =
+                    "🔊 Listen";
+
+            };
+
+
+        /* ==============================
+           SPEECH ERROR
+        ============================== */
+
+        speech.onerror =
+            function(event) {
+
+                console.log(
+                    "Speech error:",
+                    event
+                );
+
+
+                listenButton.textContent =
+                    "🔊 Listen";
+
+            };
+
+
+        /* ==============================
+           START SPEAKING
+        ============================== */
+
+        window.speechSynthesis
+            .speak(speech);
+
+    }
+);
+
+
+/* ==========================================
+   ↗ SHARE
+========================================== */
+
+shareButton.addEventListener(
+    "click",
+    async function() {
+
+
+        const number =
+            document.getElementById(
+                "kuralNumberDisplay"
+            ).textContent;
+
+
+        const line1 =
+            document.getElementById(
+                "line1"
+            ).textContent;
+
+
+        const line2 =
+            document.getElementById(
+                "line2"
+            ).textContent;
+
+
+        const translation =
+            document.getElementById(
+                "translation"
+            ).textContent;
+
+
+        const text =
+
+`திருக்குறள்
+
+${number}
+
+${line1}
+
+${line2}
+
+English Meaning:
+${translation}`;
+
+
+        try {
+
+
+            /* Mobile */
+
+            if (
+                navigator.share
+            ) {
+
+                await navigator.share({
+
+                    title:
+                        "திருக்குறள்",
+
+                    text:
+                        text
+
+                });
+
+            }
+
+
+            /* Desktop */
+
+            else {
+
+                await navigator
+                    .clipboard
+                    .writeText(
+                        text
+                    );
+
+
+                alert(
+                    "Kural copied to clipboard!"
+                );
+
+            }
+
+        }
+
+
+        catch (error) {
+
+            console.log(
+                "Share cancelled:",
+                error
+            );
+
+        }
+
+    }
+);
+
+
+/* ==========================================
+   🌙 DARK MODE
+========================================== */
+
+themeButton.addEventListener(
+    "click",
+    function() {
+
+
+        document.body
+            .classList
+            .toggle("dark");
+
+
+        const dark =
+            document.body
+                .classList
+                .contains("dark");
+
+
+        themeButton.textContent =
+            dark
+                ? "☀️"
+                : "🌙";
+
+
+        localStorage.setItem(
+            "darkMode",
+            dark
+        );
+
+    }
+);
+
+
+/* ==========================================
+   RESTORE DARK MODE
+========================================== */
+
+if (
+    localStorage.getItem(
+        "darkMode"
+    ) === "true"
+) {
+
+    document.body
+        .classList
+        .add("dark");
+
+
+    themeButton.textContent =
+        "☀️";
+
+}
+
+
+/* ==========================================
+   🎤 VOICE SEARCH
+========================================== */
+
+let recognition = null;
+
+
+const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+
+if (SpeechRecognition) {
+
+
+    recognition =
+        new SpeechRecognition();
+
+
+    /*
+        English because
+        we want to recognize
+        numbers like "eighty nine"
+    */
+
+    recognition.lang =
+        "en-US";
+
+
+    recognition.continuous =
+        false;
+
+
+    recognition.interimResults =
+        false;
+
+
+    /* START */
+
+    recognition.onstart =
+        function() {
+
+            voiceSearchButton
+                .classList
+                .add("listening");
+
+
+            voiceSearchButton.textContent =
+                "🔴";
+
+        };
+
+
+    /* RESULT */
+
+    recognition.onresult =
+        function(event) {
+
+
+            const transcript =
+                event.results[0][0]
+                    .transcript
+                    .trim();
+
+
+            console.log(
+                "Voice input:",
+                transcript
+            );
+
+
+            /*
+                Direct number
+                Example:
+                "89"
+            */
+
+            let number =
+                transcript.match(
+                    /\d+/
+                );
+
+
+            if (number) {
+
+                const kuralNumber =
+                    Number(
+                        number[0]
+                    );
+
+
+                searchVoiceNumber(
+                    kuralNumber
+                );
+
+
+                return;
+
+            }
+
+
+            /*
+                Basic English number
+                conversion
+            */
+
+            const words = {
+
+                "one": 1,
+                "two": 2,
+                "three": 3,
+                "four": 4,
+                "five": 5,
+                "six": 6,
+                "seven": 7,
+                "eight": 8,
+                "nine": 9,
+                "ten": 10
+
+            };
+
+
+            const lower =
+                transcript
+                    .toLowerCase();
+
+
+            if (
+                words[lower]
+            ) {
+
+                searchVoiceNumber(
+                    words[lower]
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                `I heard: "${transcript}". Please say a Kural number like 89.`
+            );
+
+        };
+
+
+    /* ERROR */
+
+    recognition.onerror =
+        function(event) {
+
+            console.log(
+                "Voice recognition error:",
+                event
+            );
+
+
+            voiceSearchButton
+                .classList
+                .remove("listening");
+
+
+            voiceSearchButton.textContent =
+                "🎤";
+
+        };
+
+
+    /* END */
+
+    recognition.onend =
+        function() {
+
+            voiceSearchButton
+                .classList
+                .remove("listening");
+
+
+            voiceSearchButton.textContent =
+                "🎤";
+
+        };
+
+
+    /* BUTTON */
+
+    voiceSearchButton.addEventListener(
+        "click",
+        function() {
+
+            try {
+
+                recognition.start();
+
+            }
+
+            catch (error) {
+
+                console.log(error);
+
+            }
+
+        }
+    );
+
+}
+
+
+else {
+
+
+    voiceSearchButton
+        .addEventListener(
+            "click",
+            function() {
+
+                alert(
+                    "Voice search is not supported. Please use Google Chrome."
+                );
+
+            }
+        );
+
+}
+
+
+/* ==========================================
+   VOICE SEARCH NUMBER
+========================================== */
+
+function searchVoiceNumber(number) {
+
+
+    if (
+        number < 1 ||
+        number > 1330
+    ) {
+
+        alert(
+            "Kural number must be between 1 and 1330."
+        );
+
+        return;
+
+    }
+
+
+    input.value =
+        number;
+
+
+    loadKural(number);
+
+}
+
+
+/* ==========================================
+   LOAD FIRST KURAL
+========================================== */
+
+loadKural(1);
+
+
+</script>
+
+
+</body>
+
+</html>
