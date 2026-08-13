@@ -1,81 +1,100 @@
-# Thirukkural App 📖
+Thirukkural App
 
-A modern, mobile-friendly Flask web application that brings the timeless wisdom of **Thirukkural** into an interactive experience.
+A simple mobile-friendly Flask web application for exploring Thirukkural using the Thirukkural API.
 
-## ✨ Features
+Features
 
-- 🔎 Search Kural by number
-- 🎲 Random Kural
-- ❤️ Save favourite Kurals
-- 🌙 Light / Dark mode
-- 🔊 Listen using Text-to-Speech
-- 📤 Share Kural
-- 📱 Responsive mobile UI
-- 🔌 Thirukkural API integration
-- 🚫 No SQL database
+Search Kural by number
 
-## 🛠️ Built With
+Random Kural
 
-- Python
-- Flask
-- HTML
-- CSS
-- JavaScript
-- REST API
+Save favourite Kurals
 
-## 🔄 How It Works
+Saved Kurals
 
-```text
+Light and Dark Mode
+
+Listen using Text-to-Speech
+
+Share Kural
+
+Responsive mobile UI
+
+No SQL database
+
+Tech Stack
+
+Python
+
+Flask
+
+HTML
+
+CSS
+
+JavaScript
+
+REST API
+
+How It Works
+
 User
  ↓
-Flask App
+Web UI
+ ↓
+Flask Backend
  ↓
 Thirukkural API
  ↓
 JSON Response
  ↓
-Web UI
-```
+Kural Display
 
-## 📸 Screenshots
+Project Structure
 
-### Home — Light Mode
+thirukkural_app/
+├── app.py
+├── config.py
+├── requirements.txt
+├── README.md
+├── services/
+│   └── thirukkural_api.py
+├── templates/
+│   └── index.html
+└── screenshots/
+    ├── home-light.png
+    ├── homedark.png
+    └── saved.png
 
-![Home Light Mode](screenshots/home-light.png)
+Screenshots
 
-### Saved Kurals
+Home - Light Mode
 
-![Saved Kurals](screenshots/saved.png)
 
-### Home — Dark Mode
 
-![Home Dark Mode](screenshots/home-dark.png)
+Saved Kurals
 
-## 🚀 Run Locally
 
-```bash
+
+Home - Dark Mode
+
+
+
+Run Locally
+
 pip install -r requirements.txt
 python app.py
-```
 
 Open:
 
-```text
 http://127.0.0.1:5000
-```
 
-## 🔌 API
+API
 
-This project uses the Thirukkural API:
+Thirukkural API:
 
 https://thirukkural.docs.apiary.io/
 
-## 📌 Future Improvements
+Author
 
-- Search Kurals by keywords
-- Browse chapters
-- Kural of the Day
-- PWA / Offline support
-- Improved Tamil voice support
-
-> **ஒரு குறள் — ஒரு சிந்தனை — ஒரு நல்ல மாற்றம்.**
+Keerthana.K
