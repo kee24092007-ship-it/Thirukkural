@@ -69,18 +69,17 @@ thirukkural_app/
 Screenshots
 
 Home - Light Mode
-screenshots/home-light.png
+https://github.com/kee24092007-ship-it/Thirukkural/blob/6f0c7feb40c2d423ce8f2ef9ea4edc68940c35cb/screenshots/home-light.png
 
 
 
 Saved Kurals
-screenshots/saved.png
-
+https://github.com/kee24092007-ship-it/Thirukkural/blob/6f0c7feb40c2d423ce8f2ef9ea4edc68940c35cb/screenshots/saved.png
 
 
 
 Home - Dark Mode
-screenshots/saved.png
+https://github.com/kee24092007-ship-it/Thirukkural/blob/6f0c7feb40c2d423ce8f2ef9ea4edc68940c35cb/screenshots/homedark.png
 
 
 
