@@ -74,11 +74,13 @@ screenshots/home-light.png
 
 
 Saved Kurals
+screenshots/saved.png
 
 
 
 
 Home - Dark Mode
+screenshots/saved.png
 
 
 
