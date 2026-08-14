@@ -69,10 +69,12 @@ thirukkural_app/
 Screenshots
 
 Home - Light Mode
+screenshots/home-light.png
 
 
 
 Saved Kurals
+
 
 
 
